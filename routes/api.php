@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post("/upload",[UploadController::class,'upload']);
 Route::post("/pruducts",function(){
     return Products::create([
-        'name' => 'Prodoct One s 3',
+        'name' => 'Prodoct One s a3',
         'slug' => 'product-one',
         'description' => 'this is product one',
         'price' =>'99.99'
