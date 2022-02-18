@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ProductController;
 
 use App\Models\Products;
 
@@ -17,16 +18,16 @@ use App\Models\Products;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post("/upload",[UploadController::class,'upload']);
-Route::post("/pruducts",function(){
-    return Products::create([
-        'name' => 'Prodoct One s a3',
-        'slug' => 'product-one',
-        'description' => 'this is product one',
-        'price' =>'99.99'
-    ]);
-});
+
+Route::get("/pruducts",[ProductController::class,'index']);
+
+Route::post("/pruducts",[ProductController::class,'store']);
+
+Route::resource("/pruducts",ProductController::class);
+
+Route::get("/pruducts/search/{name}",[ProductController::class,'search']);
